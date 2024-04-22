@@ -10,6 +10,7 @@
   export let compact = false
   export let emphasized = false
   export let emphasizedColor = "var(--primaryColor)"
+  export let checkRepeater = false
   export let onTabChange
   export let initialIndex
 
@@ -52,6 +53,7 @@
       if ( full || contents.children?.length != tabItems.length ) {
         tabItems = []
         console.log(contents.children);
+        console.log(checkRepeater);
         for (let index = 0; index < contents.children.length; index++) {
           tabItems.push ({
             id: contents.children[index].attributes.getNamedItem("data-id")?.nodeValue,

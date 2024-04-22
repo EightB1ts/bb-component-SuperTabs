@@ -85,6 +85,11 @@
         "dependsOn": "emphasized"
       },
       {
+        "type": "boolean",
+        "label": "Check for Repeater",
+        "key": "checkRepeater"
+      },
+      {
         "section": true,
         "name": "On Tab Change",
         "settings": [
