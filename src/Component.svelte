@@ -51,7 +51,7 @@
   function populateTabsFromChildren ( full ) {
     if ( contents ) {
 
-      if(contents.children){
+      /*if(contents.children){
         let length = 0;
         for (let index = 0; index < contents.children.length; index++) {
           if(checkRepeater) {
@@ -64,10 +64,10 @@
           }
           length++;
         }
-      }
+      }*/
       
       // contents.children?.length
-      if ( full || length != tabItems.length ) {
+      if ( full || contents.children?.length != tabItems.length ) {
 
         tabItems = []
         console.log(contents.children);
