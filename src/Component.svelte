@@ -50,11 +50,43 @@
 
   function populateTabsFromChildren ( full ) {
     if ( contents ) {
-      if ( full || contents.children?.length != tabItems.length ) {
+
+      if(contents.children){
+        let length = 0;
+        for (let index = 0; index < contents.children.length; index++) {
+          if(checkRepeater) {
+            if(contents.children[index].dataset.name == "Tab Repeater") {
+              contents.children[index].children.forEach(element => {
+                length++;
+              });
+              continue;
+            }
+          }
+          length++;
+        }
+      }
+      
+      // contents.children?.length
+      if ( full || length != tabItems.length ) {
+
         tabItems = []
         console.log(contents.children);
-        console.log(checkRepeater);
+
         for (let index = 0; index < contents.children.length; index++) {
+
+          if(checkRepeater) {
+            if(contents.children[index].dataset.name == "Tab Repeater") {
+              contents.children[index].children.forEach(child => {
+                tabItems.push ({
+                  id: child.attributes.getNamedItem("data-id")?.nodeValue,
+                  title: child.attributes.getNamedItem("data-name")?.nodeValue
+                })
+                $tabStore.id =  initTab > 0 && initTab < tabItems.length ? tabItems[initTab].id : tabItems[0].id
+              });
+              continue;
+            }
+          }
+
           tabItems.push ({
             id: contents.children[index].attributes.getNamedItem("data-id")?.nodeValue,
             title: contents.children[index].attributes.getNamedItem("data-name")?.nodeValue
